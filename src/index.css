@@ -44,6 +44,22 @@
 
   --bg-body: var(--clr-white);
   --clr-body: var(--clr-black);
+
+  --ff-primary: "Josefin Sans", sans-serif;
+
+  --fw-bold: 700;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-body: var(--clr-black);
+    --clr-body: var(--clr-white);
+  }
+}
+
+[data-theme="dark"] {
+  --bg-body: var(--clr-black);
+  --clr-body: var(--clr-white);
 }
 
 /*----------------------*/
@@ -86,8 +102,10 @@ body {
 /* Set core body defaults */
 body {
   text-rendering: optimizeSpeed;
-  line-height: 1.5;
+  line-height: 1.0;
 
+  font-size: 1.125rem;
+  font-family: var(--ff-primary);
   background-color: var(--bg-body);
   color: var(--clr-body);
 }
@@ -129,16 +147,61 @@ select {
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg-body: var(--clr-black);
-    --clr-body: var(--clr-white);
-  }
+
+/* UTILITY CLASSES */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
-[data-theme="dark"] {
-  --bg-body: var(--clr-black);
-  --clr-body: var(--clr-white);
+/* LAYOUT */
+#root {
+  display: grid;
+  align-content: center;
+  min-height: 100vh;
+  width: min(calc(100% - 3rem), 33.75rem);
+  margin-inline: auto;
+  border: 5px solid green;
+}
+
+#root > * {
+  border: 2px solid red;
+}
+
+/* HEADER */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__logo {
+  max-width: 6.25rem;
+}
+
+
+
+.theme-toggler {
+  width: 1.25rem;
+  aspect-ratio: 1;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  background-image: url('/images/icon-moon.svb');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+[data-theme="dark"] .theme-toggler {
+  background-image: url('/images/icon-sun.svg');
 }
 
 

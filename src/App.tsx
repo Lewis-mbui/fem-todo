@@ -3,13 +3,20 @@ import useTheme from "../hooks/useTheme";
 function App() {
   const { theme, toggleTheme } = useTheme();
   return (
-    <>
-      <button onClick={toggleTheme}>Change theme</button>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis,
-        assumenda.
-      </p>
-    </>
+    <main className="app">
+      <header className="header">
+        <a href="/">
+          <img
+            className="header__logo"
+            src="/images/logo.png"
+            alt="Todo Logo"
+          />
+        </a>
+        <button className="theme-toggler" onClick={toggleTheme}>
+          <span className="sr-only">Toggle Theme</span>
+        </button>
+      </header>
+    </main>
   );
 }
 

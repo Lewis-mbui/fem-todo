@@ -17,6 +17,32 @@
   src: url("/fonts/josefin-sans-v34-latin-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
+
+/* CUSTOM PROPERTIES */
+:root {
+  --clr-white: hsl(0, 100%, 100%);
+  --clr-black: hsl(0, 0%, 0%);
+
+  --clr-purple-100: hsl(236, 33%, 92%);
+  --clr-purple-300: hsl(234, 39%, 85%);
+  --clr-purple-600: hsl(235, 16%, 43%);
+  --clr-purple-700: hsl(233, 14%, 35%);
+  --clr-purple-800: hsl(237, 14%, 26%);
+
+  --clr-gray-50: hsl(0, 0%, 98%);
+  --clr-gray-300: hsl(233, 11%, 84%);
+  --clr-gray-600: hsl(236, 9%, 61%);
+
+  --clr-navy-850: hsl(235, 19%, 35%);
+  --clr-navy-900: hsl(235, 24%, 19%);
+  --clr-navy-950: hsl(235, 21%, 11%);
+  
+  --clr-blue-500: hsl(220, 98%, 61%);
+
+  --grad-light: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  --grad-dark: linear-gradient(to right, hsl(254, 85%, 40%), hsl(307, 64%, 39%));
+}
+
 /*----------------------*/
 /* RESET                */
 /*----------------------*/

@@ -41,6 +41,9 @@
 
   --grad-light: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   --grad-dark: linear-gradient(to right, hsl(254, 85%, 40%), hsl(307, 64%, 39%));
+
+  --bg-body: var(--clr-white);
+  --clr-body: var(--clr-black);
 }
 
 /*----------------------*/
@@ -84,6 +87,9 @@ body {
 body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+
+  background-color: var(--bg-body);
+  color: var(--clr-body);
 }
 
 /* A elements that don't have a class get default styles */
@@ -122,3 +128,17 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-body: var(--clr-black);
+    --clr-body: var(--clr-white);
+  }
+}
+
+[data-theme="dark"] {
+  --bg-body: var(--clr-black);
+  --clr-body: var(--clr-white);
+}
+
+

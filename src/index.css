@@ -161,6 +161,27 @@ select {
 }
 
 /* LAYOUT */
+body::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  outline: 4px solid pink;
+  height: 30vh;
+
+  background-image: url('/images/bg-mobile-light.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+}
+
+[data-theme="dark"] body::before {
+  background-image: url('/images/bg-mobile-dark.jpg');
+}
+
 #root {
   display: grid;
   align-content: center;

@@ -44,6 +44,11 @@
 
   --bg-body: var(--clr-white);
   --clr-body: var(--clr-black);
+  --clr-radio-outline: #979797;
+
+  --grad-radio: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+
+  --shadow: 0 35px 50px 0 hsla(235 18% 80% / .5);
 
   --ff-primary: "Josefin Sans", sans-serif;
 
@@ -184,15 +189,20 @@ body::before {
 
 #root {
   display: grid;
-  align-content: center;
+  align-content: start;
   min-height: 100vh;
   width: min(calc(100% - 3rem), 33.75rem);
   margin-inline: auto;
+  padding-block: 3rem;
   border: 5px solid green;
 }
 
 #root > * {
   border: 2px solid red;
+}
+
+.app > :nth-child(2){
+  margin: 2.5rem 0 1rem;
 }
 
 /* HEADER */
@@ -207,7 +217,6 @@ body::before {
 }
 
 
-
 .theme-toggler {
   width: 1.25rem;
   aspect-ratio: 1;
@@ -215,7 +224,7 @@ body::before {
   background-color: transparent;
   cursor: pointer;
 
-  background-image: url('/images/icon-moon.svb');
+  background-image: url('/images/icon-moon.svg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -223,6 +232,43 @@ body::before {
 
 [data-theme="dark"] .theme-toggler {
   background-image: url('/images/icon-sun.svg');
+}
+
+/* TODO INPUT */
+.todo-input {
+  outline: 2px solid green;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: .875rem 1.5rem;
+  background-color: var(--bg-body);
+  box-shadow: var(--shadow);
+}
+
+.todo-input > input {
+  width: 100%;
+  border: 0;
+  background-color: transparent;
+  color: var(--clr-gray-600);
+  outline: 0;
+}
+
+.add-todo {
+  width: 1.25rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid var(--clr-radio-outline);
+  background-color: transparent;
+  flex-shrink: 0;
+}
+
+.add-todo.added {
+  border: 0;
+  background-image:  url('/images/icon-check.svg'), var(--grad-radio);
+  background-size: 10px, cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 

@@ -1,29 +1,10 @@
-import { useRef } from "react";
 import useTheme from "../hooks/useTheme";
 import useTodos from "../hooks/useTodos";
-import generateId from "../utils/generateId";
+import TodoInput from "./components/TodoInput";
 
 function App() {
-  const { theme, toggleTheme } = useTheme();
-  const { todos, dispatch } = useTodos();
-  const todoInputRef = useRef<HTMLInputElement>(null);
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key !== "Enter") return;
-
-    if (!todoInputRef.current) return;
-
-    dispatch({
-      type: "ADD",
-      todo: {
-        id: generateId(),
-        description: todoInputRef.current.value,
-        isCompleted: false,
-      },
-    });
-
-    todoInputRef.current.value = "";
-  };
+  const { toggleTheme } = useTheme();
+  const { todos } = useTodos();
 
   return (
     <main className="app">
@@ -39,8 +20,8 @@ function App() {
           <span className="sr-only">Toggle Theme</span>
         </button>
       </header>
-      <input ref={todoInputRef} onKeyDown={handleKeyDown} type="text" />
-      <ul>
+      <TodoInput />
+      <ul role="list">
         {todos.map((todo) => (
           <li key={todo.id}>{todo.description}</li>
         ))}

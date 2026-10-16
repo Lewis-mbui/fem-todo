@@ -1,6 +1,7 @@
 import useTheme from "../hooks/useTheme";
 import useTodos from "../hooks/useTodos";
 import TodoInput from "./components/TodoInput";
+import TodoList from "./components/TodoList";
 
 function App() {
   const { toggleTheme } = useTheme();
@@ -21,11 +22,7 @@ function App() {
         </button>
       </header>
       <TodoInput />
-      <ul role="list">
-        {todos.map((todo) => (
-          <li key={todo.id}>{todo.description}</li>
-        ))}
-      </ul>
+      <TodoList todos={todos} />
     </main>
   );
 }

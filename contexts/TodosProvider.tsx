@@ -14,12 +14,21 @@ export interface Todo {
   isCompleted: boolean;
 }
 
-type Action = { type: "INIT"; todos: Todo[] } | { type: "ADD"; todo: Todo };
+type Action =
+  | { type: "INIT"; todos: Todo[] }
+  | { type: "ADD"; todo: Todo }
+  | { type: "TOGGLE"; todoId: string };
 
 const reducer = (todos: Todo[], action: Action): Todo[] => {
   switch (action.type) {
     case "ADD":
       return [action.todo, ...todos];
+    case "TOGGLE":
+      return todos.map((todo) =>
+        todo.id !== action.todoId
+          ? todo
+          : { ...todo, isCompleted: !todo.isCompleted },
+      );
     default:
       return todos;
   }

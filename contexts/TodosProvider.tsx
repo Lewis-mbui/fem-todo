@@ -18,7 +18,8 @@ type Action =
   | { type: "INIT"; todos: Todo[] }
   | { type: "ADD"; todo: Todo }
   | { type: "TOGGLE"; todoId: string }
-  | { type: "DELETE"; todoId: string };
+  | { type: "DELETE"; todoId: string }
+  | { type: "CLEAR_COMPLETED" };
 const reducer = (todos: Todo[], action: Action): Todo[] => {
   switch (action.type) {
     case "ADD":
@@ -31,6 +32,9 @@ const reducer = (todos: Todo[], action: Action): Todo[] => {
       );
     case "DELETE":
       return todos.filter((t) => t.id !== action.todoId);
+
+    case "CLEAR_COMPLETED":
+      return todos.filter((t) => !t.isCompleted);
     default:
       return todos;
   }

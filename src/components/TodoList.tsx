@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { Todo } from "../../contexts/TodosProvider";
 import TodoItem from "./TodoItem";
+import useTodos from "../../hooks/useTodos";
 
 interface Props {
   todos: Todo[];
@@ -8,6 +9,7 @@ interface Props {
 
 const TodoList = ({ todos }: Props) => {
   const [activeFilter, setActiveFilter] = useState("all");
+  const { dispatch } = useTodos();
 
   const filters = [
     { name: "all", description: "All" },
@@ -30,7 +32,12 @@ const TodoList = ({ todos }: Props) => {
       </ul>
       <div className="todos-extras">
         <p className="todos-count">{`${visibleTodos.length} item${visibleTodos.length === 1 ? "" : "s"} ${activeFilter === "all" ? "left" : ""}`}</p>
-        <button className="todos-clear">Clear Completed</button>
+        <button
+          className="todos-clear"
+          onClick={() => dispatch({ type: "CLEAR_COMPLETED" })}
+        >
+          Clear Completed
+        </button>
         <div className="todos-tabs">
           {filters.map((f) => (
             <button

@@ -41,7 +41,7 @@ const TodoInput = () => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key !== "Enter") return;
 
-    if (!todoInputRef.current) return;
+    if (!todoInputRef.current || !todoInputRef.current.value) return;
 
     dispatch({
       type: "ADD",

@@ -29,6 +29,8 @@ const TodoList = ({ todos }: Props) => {
     if (activeFilter === "completed" && todo.isCompleted) return true;
   });
 
+  if (!todos.length) return null;
+
   return (
     <div className="todos-wrapper">
       <ul role="list" className="todo-list">

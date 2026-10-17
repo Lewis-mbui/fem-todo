@@ -194,7 +194,6 @@ body::before {
   top: 0;
   right: 0;
   left: 0;
-  outline: 4px solid pink;
   height: 30vh;
 
   background-image: url('/images/bg-mobile-light.jpg');
@@ -215,11 +214,6 @@ body::before {
   width: min(calc(100% - 3rem), 33.75rem);
   margin-inline: auto;
   padding-block: 3rem;
-  border: 5px solid green;
-}
-
-#root > * {
-  border: 2px solid red;
 }
 
 .app > :nth-child(2){
@@ -267,7 +261,6 @@ body::before {
 
 /* TODO INPUT */
 .todo-input {
-  outline: 2px solid green;
   display: flex;
   gap: 1rem;
   align-items: center;
@@ -307,7 +300,6 @@ body::before {
 
 /* TODO LIST */
 .todos-wrapper {
-  outline: 3px solid blue;
   border-radius: var(--radius-main);
 }
 
@@ -321,7 +313,7 @@ body::before {
   align-items: center;
   gap: 1rem;
   padding: 1rem 1.5rem;
-  border: 1px solid var(--clr-todo-border);
+  border-bottom: 1px solid var(--clr-todo-border);
   background-color: var(--bg-block);
 }
 

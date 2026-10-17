@@ -17,7 +17,8 @@ export interface Todo {
 type Action =
   | { type: "INIT"; todos: Todo[] }
   | { type: "ADD"; todo: Todo }
-  | { type: "TOGGLE"; todoId: string };
+  | { type: "TOGGLE"; todoId: string }
+  | { type: "DELETE"; todoId: string };
 const reducer = (todos: Todo[], action: Action): Todo[] => {
   switch (action.type) {
     case "ADD":
@@ -28,7 +29,8 @@ const reducer = (todos: Todo[], action: Action): Todo[] => {
           ? todo
           : { ...todo, isCompleted: !todo.isCompleted },
       );
-
+    case "DELETE":
+      return todos.filter((t) => t.id !== action.todoId);
     default:
       return todos;
   }

@@ -19,7 +19,10 @@ const TodoItem = ({ todo }: Props) => {
         type="checkbox"
       />
       <p>{todo.description}</p>
-      <button className="delete-todo">
+      <button
+        className="delete-todo"
+        onClick={() => dispatch({ type: "DELETE", todoId: todo.id })}
+      >
         <span className="sr-only">Delete todo Item</span>
       </button>
     </li>

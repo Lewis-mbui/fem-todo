@@ -51,6 +51,7 @@
   --clr-tab: var(--clr-gray-600);
   --clr-tab-hovered: var(--clr-navy-850);
   --clr-todo-crossed: var(--clr-gray-300);
+  --clr-todo-input-text: var(--clr-purple-800);
 
   --grad-radio: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 
@@ -72,6 +73,7 @@
     --clr-tab: var(--clr-purple-600);
     --clr-tab-hovered: var(--clr-purple-300);
     --clr-todo-crossed: var(--clr-purple-700);
+    --clr-todo-input-text: var(--clr-gray-600);
   }
 }
 
@@ -83,6 +85,7 @@
   --clr-tab: var(--clr-purple-600);
   --clr-tab-hovered: var(--clr-purple-300);
   --clr-todo-crossed: var(--clr-purple-700);
+  --clr-todo-input-text: var(--clr-gray-600);
 }
 
 /*----------------------*/
@@ -223,6 +226,16 @@ body::before {
   margin: 2.5rem 0 1rem;
 }
 
+@media (min-width: 37.5em) {
+  body::before {
+    background-image: url('/images/bg-desktop-light.jpg');
+  }
+
+  [data-theme="dark"] body::before {
+    background-image: url('/images/bg-desktop-dark.jpg');
+  }
+}
+
 /* HEADER */
 
 .header {
@@ -268,7 +281,7 @@ body::before {
   width: 100%;
   border: 0;
   background-color: transparent;
-  color: var(--clr-gray-600);
+  color: var(--clr-todo-input-text);
   outline: 0;
 }
 
@@ -281,6 +294,7 @@ body::before {
   background-color: transparent;
   flex-shrink: 0;
 }
+
 
 .add-todo.added,
 .todo-item [type="checkbox"]:checked {
@@ -319,6 +333,16 @@ body::before {
   border-radius: 50%;
   cursor: pointer;
   border: 1px solid var(--clr-radio-outline);
+}
+
+.todo-item [type="checkbox"]:hover:not(:checked),
+.add-todo:hover:not(.added) {
+  border-color: transparent;
+  /* Layer 1: Solid fill (clipped to padding) | Layer 2: Gradient fill (extends to border) */
+  background-image: linear-gradient(var(--bg-block), var(--bg-block)), 
+                    var(--grad-radio);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
 }
 
 .todo-item > :nth-child(2) { flex: 1; }
@@ -401,6 +425,10 @@ body::before {
 }
 
 @media (min-width: 37.5em) {
+  .todo-item {
+    padding-block: 1.6875rem;
+  }
+
   .todos-extras {
     grid-template-columns: auto 1fr auto;
     background-color: var(--bg-block);

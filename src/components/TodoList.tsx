@@ -17,6 +17,12 @@ const TodoList = ({ todos }: Props) => {
     { name: "completed", description: "Completed" },
   ] as const;
 
+  let itemCount: number | undefined;
+
+  if (activeFilter === "all" || activeFilter === "active")
+    itemCount = todos.filter((t) => !t.isCompleted).length;
+  else itemCount = todos.filter((t) => t.isCompleted).length;
+
   const visibleTodos = todos.filter((todo) => {
     if (activeFilter === "all") return true;
     if (activeFilter === "active" && !todo.isCompleted) return true;
@@ -31,7 +37,7 @@ const TodoList = ({ todos }: Props) => {
         ))}
       </ul>
       <div className="todos-extras">
-        <p className="todos-count">{`${visibleTodos.length} item${visibleTodos.length === 1 ? "" : "s"} ${activeFilter === "all" ? "left" : ""}`}</p>
+        <p className="todos-count">{`${itemCount} item${itemCount === 1 ? "" : "s"} ${activeFilter === "all" ? "left" : ""}`}</p>
         <button
           className="todos-clear"
           onClick={() => dispatch({ type: "CLEAR_COMPLETED" })}

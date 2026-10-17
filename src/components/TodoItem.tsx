@@ -8,11 +8,8 @@ interface Props {
 const TodoItem = ({ todo }: Props) => {
   const { dispatch } = useTodos();
 
-  const isChecked = todo.isCompleted;
-  console.log(isChecked);
-
   return (
-    <li className="todo-item">
+    <li className={`todo-item ${todo.isCompleted ? "crossed" : ""}`}>
       <input
         checked={todo.isCompleted}
         onChange={() => dispatch({ type: "TOGGLE", todoId: todo.id })}

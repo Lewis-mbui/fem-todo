@@ -50,6 +50,7 @@
   --clr-todo-border: var(--clr-purple-300);
   --clr-tab: var(--clr-gray-600);
   --clr-tab-hovered: var(--clr-navy-850);
+  --clr-todo-crossed: var(--clr-gray-300);
 
   --grad-radio: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 
@@ -70,6 +71,7 @@
     --clr-todo-border: var(--clr-purple-600);
     --clr-tab: var(--clr-purple-600);
     --clr-tab-hovered: var(--clr-purple-300);
+    --clr-todo-crossed: var(--clr-purple-700);
   }
 }
 
@@ -80,6 +82,7 @@
   --clr-todo-border: var(--clr-purple-600);
   --clr-tab: var(--clr-purple-600);
   --clr-tab-hovered: var(--clr-purple-300);
+  --clr-todo-crossed: var(--clr-purple-700);
 }
 
 /*----------------------*/
@@ -319,6 +322,11 @@ body::before {
 }
 
 .todo-item > :nth-child(2) { flex: 1; }
+
+.todo-item.crossed > :nth-child(2) {
+  text-decoration: line-through;
+  color: var(--clr-todo-crossed);
+}
 
 .delete-todo {
   border: 0;

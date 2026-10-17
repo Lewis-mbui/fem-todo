@@ -43,10 +43,13 @@
   --grad-light: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   --grad-dark: linear-gradient(to right, hsl(254, 85%, 40%), hsl(307, 64%, 39%));
 
+  /* Colors that change with theme */
   --bg-body: var(--clr-gray-50);
   --clr-body: var(--clr-black);
   --bg-block: var(--clr-white);
   --clr-todo-border: var(--clr-purple-300);
+  --clr-tab: var(--clr-gray-600);
+  --clr-tab-hovered: var(--clr-navy-850);
 
   --grad-radio: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 
@@ -65,6 +68,8 @@
     --clr-body: var(--clr-white);
     --bg-block: var(--clr-navy-900);
     --clr-todo-border: var(--clr-purple-600);
+    --clr-tab: var(--clr-purple-600);
+    --clr-tab-hovered: var(--clr-purple-300);
   }
 }
 
@@ -73,6 +78,8 @@
   --clr-body: var(--clr-white);
   --bg-block: var(--clr-navy-900);
   --clr-todo-border: var(--clr-purple-600);
+  --clr-tab: var(--clr-purple-600);
+  --clr-tab-hovered: var(--clr-purple-300);
 }
 
 /*----------------------*/
@@ -287,6 +294,11 @@ body::before {
   border-radius: var(--radius-main);
 }
 
+[data-theme="light"] .todos-wrapper,
+[data-theme="light"] .todo-list {
+  box-shadow: var(--shadow);
+}
+
 .todo-item {
   display: flex;
   align-items: center;
@@ -368,6 +380,16 @@ body::before {
 .todo-tab {
   background-color: transparent;
   font-weight: var(--fw-bold);
+  color: var(--clr-tab);
+}
+
+.todo-tab:hover:not(.active),
+.todo-tab:focus-visible:not(.active) {
+  color: var(--clr-tab-hovered);
+}
+
+.todo-tab.active {
+  color: var(--clr-blue-500);
 }
 
 @media (min-width: 37.5em) {

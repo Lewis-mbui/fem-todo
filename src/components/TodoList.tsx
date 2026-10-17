@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { Todo } from "../../contexts/TodosProvider";
 import TodoItem from "./TodoItem";
 
@@ -6,20 +7,40 @@ interface Props {
 }
 
 const TodoList = ({ todos }: Props) => {
+  const [activeFilter, setActiveFilter] = useState("all");
+
+  const filters = [
+    { name: "all", description: "All" },
+    { name: "active", description: "Active" },
+    { name: "completed", description: "Completed" },
+  ] as const;
+
+  const visibleTodos = todos.filter((todo) => {
+    if (activeFilter === "all") return true;
+    if (activeFilter === "active" && !todo.isCompleted) return true;
+    if (activeFilter === "completed" && todo.isCompleted) return true;
+  });
+
   return (
     <div className="todos-wrapper">
       <ul role="list" className="todo-list">
-        {todos.map((todo) => (
+        {visibleTodos.map((todo) => (
           <TodoItem key={todo.id} todo={todo} />
         ))}
       </ul>
       <div className="todos-extras">
-        <p className="todos-count">{`${todos.length} items left`}</p>
+        <p className="todos-count">{`${visibleTodos.length} item${visibleTodos.length === 1 ? "" : "s"} ${activeFilter === "all" ? "left" : ""}`}</p>
         <button className="todos-clear">Clear Completed</button>
         <div className="todos-tabs">
-          <button className="todo-tab">All</button>
-          <button className="todo-tab">Active</button>
-          <button className="todo-tab">Completed</button>
+          {filters.map((f) => (
+            <button
+              onClick={() => setActiveFilter(f.name)}
+              key={f.name}
+              className={`todo-tab ${activeFilter === f.name ? "active" : ""}`}
+            >
+              {f.description}
+            </button>
+          ))}
         </div>
       </div>
     </div>

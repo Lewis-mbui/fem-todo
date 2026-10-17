@@ -18,7 +18,6 @@ type Action =
   | { type: "INIT"; todos: Todo[] }
   | { type: "ADD"; todo: Todo }
   | { type: "TOGGLE"; todoId: string };
-
 const reducer = (todos: Todo[], action: Action): Todo[] => {
   switch (action.type) {
     case "ADD":
@@ -29,6 +28,7 @@ const reducer = (todos: Todo[], action: Action): Todo[] => {
           ? todo
           : { ...todo, isCompleted: !todo.isCompleted },
       );
+
     default:
       return todos;
   }

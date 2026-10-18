@@ -8,7 +8,16 @@ const TodoInput = () => {
   const timeoutRef = useRef<number>(null);
   const addTodoRef = useRef<HTMLButtonElement>(null);
 
-  const afterAdd = () => {
+  const addTodo = () => {
+    dispatch({
+      type: "ADD",
+      todo: {
+        id: generateId(),
+        description: todoInputRef.current!.value,
+        isCompleted: false,
+      },
+    });
+
     todoInputRef.current!.value = "";
     addTodoRef.current?.classList.add("added");
 
@@ -26,16 +35,7 @@ const TodoInput = () => {
     )
       return;
 
-    dispatch({
-      type: "ADD",
-      todo: {
-        id: generateId(),
-        description: todoInputRef.current.value,
-        isCompleted: false,
-      },
-    });
-
-    afterAdd();
+    addTodo();
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -43,16 +43,7 @@ const TodoInput = () => {
 
     if (!todoInputRef.current || !todoInputRef.current.value) return;
 
-    dispatch({
-      type: "ADD",
-      todo: {
-        id: generateId(),
-        description: todoInputRef.current.value,
-        isCompleted: false,
-      },
-    });
-
-    afterAdd();
+    addTodo();
   };
 
   return (

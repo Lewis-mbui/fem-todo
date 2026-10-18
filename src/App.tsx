@@ -4,7 +4,7 @@ import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 
 function App() {
-  const { toggleTheme } = useTheme();
+  const { toggleTheme, theme } = useTheme();
   const { todos } = useTodos();
 
   return (
@@ -17,9 +17,11 @@ function App() {
             alt="Todo Logo"
           />
         </a>
-        <button className="theme-toggler" onClick={toggleTheme}>
-          <span className="sr-only">Toggle Theme</span>
-        </button>
+        <button
+          className="theme-toggler"
+          onClick={toggleTheme}
+          aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
+        ></button>
       </header>
       <TodoInput />
       <TodoList todos={todos} />

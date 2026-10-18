@@ -11,17 +11,17 @@ const TodoItem = ({ todo }: Props) => {
   return (
     <li className={`todo-item ${todo.isCompleted ? "crossed" : ""}`}>
       <input
+        id={`todo-${todo.id}`}
         checked={todo.isCompleted}
         onChange={() => dispatch({ type: "TOGGLE", todoId: todo.id })}
         type="checkbox"
       />
-      <p>{todo.description}</p>
+      <label htmlFor={`todo-${todo.id}`}>{todo.description}</label>
       <button
         className="delete-todo"
         onClick={() => dispatch({ type: "DELETE", todoId: todo.id })}
-      >
-        <span className="sr-only">Delete todo Item</span>
-      </button>
+        aria-label={`Delete ${todo.description}`}
+      ></button>
     </li>
   );
 };

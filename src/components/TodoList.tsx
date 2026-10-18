@@ -35,18 +35,23 @@ const TodoList = ({ todos }: Props) => {
         ))}
       </ul>
       <div className="todos-extras">
-        <p className="todos-count">{`${activeItemsCount} items left`}</p>
+        <p className="todos-count" aria-live="polite">
+          {" "}
+          {activeItemsCount} {activeItemsCount === 1 ? "item" : "items"} left
+        </p>
         <button
           className="todos-clear"
           onClick={() => dispatch({ type: "CLEAR_COMPLETED" })}
         >
           Clear Completed
         </button>
-        <div className="todos-tabs">
+        <div className="todos-tabs" role="group" aria-label="Filter todos">
           {filters.map((f) => (
             <button
               onClick={() => setActiveFilter(f.name)}
               key={f.name}
+              type="button"
+              aria-pressed={activeFilter === f.name}
               className={`todo-tab ${activeFilter === f.name ? "active" : ""}`}
             >
               {f.description}

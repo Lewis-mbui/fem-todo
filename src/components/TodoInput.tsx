@@ -51,7 +51,11 @@ const TodoInput = () => {
       <button ref={addTodoRef} onClick={handleClick} className="add-todo">
         <span className="sr-only">Add todo</span>
       </button>
+      <label className="sr-only" htmlFor="todo-item">
+        Create a new Todo
+      </label>
       <input
+        id="todo-item"
         placeholder="Create a new todo..."
         ref={todoInputRef}
         onKeyDown={handleKeyDown}

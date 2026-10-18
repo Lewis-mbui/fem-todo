@@ -7,6 +7,7 @@ import {
 } from "react";
 import { TODOS_KEY } from "../constants";
 import initialTodos from "../data/todos";
+import isValidTodo from "../utils/isValidTodo";
 
 export interface Todo {
   id: string;
@@ -15,7 +16,6 @@ export interface Todo {
 }
 
 type Action =
-  | { type: "INIT"; todos: Todo[] }
   | { type: "ADD"; todo: Todo }
   | { type: "TOGGLE"; todoId: string }
   | { type: "DELETE"; todoId: string }
@@ -53,9 +53,17 @@ interface Props {
 
 const TodosProvider = ({ children }: Props) => {
   const initializer = (): Todo[] => {
-    const saved = localStorage.getItem(TODOS_KEY);
+    try {
+      const saved = localStorage.getItem(TODOS_KEY);
 
-    if (saved) return JSON.parse(saved) as Todo[];
+      if (!saved) return initialTodos;
+
+      const parsed = JSON.parse(saved);
+
+      if (Array.isArray(parsed) && parsed.every(isValidTodo)) return parsed;
+    } catch (error) {
+      return initialTodos;
+    }
 
     return initialTodos;
   };

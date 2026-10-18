@@ -6,7 +6,7 @@ const isValidTodo = (item: any): item is Todo => {
     typeof item === "object" &&
     typeof item.id === "string" &&
     typeof item.description === "string" &&
-    typeof item.completed === "boolean"
+    typeof item.isCompleted === "boolean"
   );
 };
 

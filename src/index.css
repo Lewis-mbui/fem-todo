@@ -313,6 +313,7 @@ body::before {
   background-color: transparent;
   border: 0;
   color: var(--clr-body);
+  touch-action: none;
 }
 
 .todo-item {

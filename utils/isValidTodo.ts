@@ -1,4 +1,4 @@
-import { type Todo } from "../contexts/TodosProvider";
+import type Todo from "../types/Todo";
 
 const isValidTodo = (item: any): item is Todo => {
   return (

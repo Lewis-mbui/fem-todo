@@ -1,4 +1,4 @@
-import { type Todo } from "../contexts/TodosProvider";
+import type Todo from "../types/Todo";
 
 const initialTodos: Todo[] = [
   { id: "vbho4r0c", description: "Jog around the park", isCompleted: false },

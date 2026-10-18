@@ -8,12 +8,7 @@ import {
 import { TODOS_KEY } from "../constants";
 import initialTodos from "../data/todos";
 import isValidTodo from "../utils/isValidTodo";
-
-export interface Todo {
-  id: string;
-  description: string;
-  isCompleted: boolean;
-}
+import type Todo from "../types/Todo";
 
 type Action =
   | { type: "ADD"; todo: Todo }

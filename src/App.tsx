@@ -1,5 +1,5 @@
-import useTheme from "../hooks/useTheme";
-import useTodos from "../hooks/useTodos";
+import useTheme from "./hooks/useTheme";
+import useTodos from "./hooks/useTodos";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 

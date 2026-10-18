@@ -1,5 +1,5 @@
-import type Todo from "../../types/Todo";
-import useTodos from "../../hooks/useTodos";
+import type Todo from "../types/Todo";
+import useTodos from "../hooks/useTodos";
 
 interface Props {
   todo: Todo;

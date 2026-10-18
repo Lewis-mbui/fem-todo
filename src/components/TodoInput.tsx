@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
-import useTodos from "../../hooks/useTodos";
-import generateId from "../../utils/generateId";
+import useTodos from "../hooks/useTodos";
+import generateId from "../utils/generateId";
 
 const TodoInput = () => {
   const { dispatch } = useTodos();

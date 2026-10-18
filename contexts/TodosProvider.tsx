@@ -5,10 +5,10 @@ import {
   useEffect,
   useReducer,
 } from "react";
-import { TODOS_KEY } from "../constants";
-import initialTodos from "../data/todos";
-import isValidTodo from "../utils/isValidTodo";
-import type Todo from "../types/Todo";
+import { TODOS_KEY } from "../src/constants";
+import initialTodos from "../src/data/todos";
+import isValidTodo from "../src/utils/isValidTodo";
+import type Todo from "../src/types/Todo";
 
 type Action =
   | { type: "ADD"; todo: Todo }

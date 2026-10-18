@@ -308,6 +308,13 @@ body::before {
   box-shadow: var(--shadow);
 }
 
+.drag-btn {
+  cursor: grab;
+  background-color: transparent;
+  border: 0;
+  color: var(--clr-body);
+}
+
 .todo-item {
   display: flex;
   align-items: center;
@@ -337,7 +344,7 @@ body::before {
   background-clip: padding-box, border-box;
 }
 
-.todo-item > :nth-child(2) { flex: 1; }
+.todo-item > label { flex: 1; }
 
 .todo-item.crossed > :nth-child(2) {
   text-decoration: line-through;
@@ -439,6 +446,12 @@ body::before {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
   }
+}
+
+.drag-prompt {
+  justify-self: center;
+  margin-top: 2.5rem;
+  color: var(--clr-tab);
 }
 
 

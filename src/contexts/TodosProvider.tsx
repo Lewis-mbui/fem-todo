@@ -13,6 +13,7 @@ import isValidTodo from "../utils/isValidTodo";
 type Action =
   | { type: "ADD"; todo: Todo }
   | { type: "TOGGLE"; todoId: string }
+  | { type: "SET"; todos: Todo[] }
   | { type: "DELETE"; todoId: string }
   | { type: "CLEAR_COMPLETED" };
 const reducer = (todos: Todo[], action: Action): Todo[] => {
@@ -25,6 +26,8 @@ const reducer = (todos: Todo[], action: Action): Todo[] => {
           ? todo
           : { ...todo, isCompleted: !todo.isCompleted },
       );
+    case "SET":
+      return action.todos;
     case "DELETE":
       return todos.filter((t) => t.id !== action.todoId);
 

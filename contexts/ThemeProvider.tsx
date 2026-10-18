@@ -16,9 +16,9 @@ interface Props {
 
 const ThemeProvider = ({ children }: Props) => {
   const [theme, setTheme] = useState<Theme>(() => {
-    const saved = localStorage.getItem(THEME_KEY) as Theme;
+    const saved = localStorage.getItem(THEME_KEY);
 
-    if (saved) return saved;
+    if (saved === "dark" || saved === "light") return saved;
 
     if (window.matchMedia("(prefers-color-scheme: dark)").matches)
       return "dark";

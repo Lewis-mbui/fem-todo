@@ -1,131 +1,114 @@
-# Frontend Mentor - Todo app solution
+# Todo App
 
-This is a solution to the [Todo app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
-
-## Table of contents
-
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-  - [AI Collaboration](#ai-collaboration)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
+A responsive todo application built with **React, TypeScript, and Vite** as a solution to the [Frontend Mentor Todo App challenge](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). It supports task management, filtering, theme switching, and drag-and-drop reordering, with todos saved locally between visits.
 
 ## Overview
 
-### The challenge
+### Features
 
-Users should be able to:
-
-- View the optimal layout for the app depending on their device's screen size
-- See hover states for all interactive elements on the page
-- Add new todos to the list
-- Mark todos as complete
-- Delete todos from the list
-- Filter by all/active/complete todos
-- Clear all completed todos
-- Toggle light and dark mode
-- **Bonus**: Drag and drop to reorder items on the list
+- Add new todos and mark them as completed or active.
+- Delete individual todos or clear all completed todos.
+- Filter tasks by **All**, **Active**, or **Completed**.
+- Reorder tasks with drag and drop, including keyboard-based sorting support.
+- Switch between light and dark themes, with the initial theme based on system preferences.
+- Persist todos and theme preference using `localStorage`.
+- View a responsive layout designed for mobile and desktop screens.
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![Todo app screenshot](/public/screenshots/screenshot.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- **Frontend Mentor challenge:** [Todo App](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW)
+- **Live demo:** [Live Todo](https://fem-todo-tau.vercel.app/)
 
-## My process
+## Built with
 
-### Built with
+- **React** — component-based user interface
+- **TypeScript** — typed components, actions, and todo data
+- **Vite** — development server and production build tooling
+- **CSS** — responsive layouts, custom styling, and light/dark themes
+- **React Context API and `useReducer`** — shared todo state and updates
+- **`@dnd-kit`** — sortable todos with pointer and keyboard sensors
+- **Web Storage API** — local persistence for todos and theme settings
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+## Getting started
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+### Prerequisites
 
-### What I learned
+Install a version of Node.js compatible with the project's Vite version and npm.
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+### Installation
 
-To see how you can add code snippets, see below:
+1. Clone the repository:
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
+   ```bash
+   git clone https://github.com/Lewis-mbui/fem-todo.git
+   cd fem-todo
+   ```
 
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
+   _Update the repository URL and folder name if yours differ._
 
-```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
-};
-```
+2. Install dependencies:
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+   ```bash
+   npm install
+   ```
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+3. Start the development server:
 
-### Continued development
+   ```bash
+   npm run dev
+   ```
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+4. Open the local URL printed in your terminal.
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+### Available scripts
 
-### Useful resources
+| Command           | Description                          |
+| ----------------- | ------------------------------------ |
+| `npm run dev`     | Start the Vite development server    |
+| `npm run build`   | Type-check and build for production  |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint`    | Run Oxlint                           |
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+## Implementation notes
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+### State management
 
-### AI Collaboration
+The app uses a `TodosProvider` with React Context and `useReducer` to manage adding, toggling, deleting, clearing, and reordering todos. Custom hooks provide access to the todo and theme contexts from components.
 
-Describe how you used AI tools (if any) during this project. This helps demonstrate your ability to work effectively with AI assistants.
+### Local persistence
 
-- What tools did you use (e.g., ChatGPT, Claude, GitHub Copilot)?
-- How did you use them (e.g., debugging, generating boilerplate, brainstorming solutions)?
-- What worked well? What didn't?
+Todos are loaded from `localStorage` when the provider initializes. Saved data is validated before use, with starter todos used as a fallback. Updates are written back to `localStorage`. The selected theme is also saved locally; when no preference is saved, the app checks the device's preferred color scheme.
 
-**Note: Delete this note and the content above if you didn't use AI, or replace with your own experience.**
+### Drag and drop
+
+The list uses `@dnd-kit/core` and `@dnd-kit/sortable`, with pointer and keyboard sensors. When a drag ends, the reordered list is dispatched to the todo reducer and persisted.
+
+## What I learned
+
+This project provided an opportunity to practice:
+
+- Organizing a React application into reusable components, contexts, and custom hooks.
+- Modeling todo state and reducer actions with TypeScript.
+- Keeping application state synchronized with browser storage.
+- Implementing sortable interactions with `dnd-kit`.
+- Managing responsive styling and theme preferences without an external UI framework.
+
+## Possible improvements
+
+- Add automated tests for reducer actions and user interactions.
+- Improve empty-state messaging when no tasks match the selected filter.
+- Review keyboard and screen-reader usability across all interactions.
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
+- **GitHub:** [Lewis-mbui](https://github.com/Lewis-mbui)
+- **Portfolio:** [Lewis Mbui](https://lewis-mbui-portfolio.vercel.app/)
+- **LinkedIn:** [Lewis Mbui](https://www.linkedin.com/in/lewis-mbui/)
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+Challenge design provided by [Frontend Mentor](https://www.frontendmentor.io/).
